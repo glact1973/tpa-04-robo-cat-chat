@@ -32,8 +32,28 @@ const catChatPhrases = [
   'にゃんすた'
 ];
 const generateRandomCatChatPhrase = function() {
-  return "hello";
+  //======================================
+  // <obata>元々のソースをコメントアウト
+  //return "hello";
+  //======================================
+
+  //======================================
+  //<obata>乱数を生成する関数を読み出し、ランダムなメッセージを返す
+  //======================================
+  return catChatPhrases[getRandomNum(0,catChatPhrases.length-1)];
+  //return 'test';
 };
+
+//======================================
+//<obata>整数の乱数を作成する関数を新規作成
+//Math.random(),Math.ceil(),Math.floorを利用
+//======================================
+const getRandomNum = function(min, max) {
+  min = Math.ceil(min); //引数以上の最小の整数
+  max = Math.floor(max); //引数以下の最大の整数
+  return Math.floor(Math.random() * (max - min)) + min; //min~maxの間で乱数を作成
+}
+
 
 // see https://market.mashape.com/blaazetech/robohash-image-generator
 const generateRobotThumb = function() {
@@ -69,6 +89,7 @@ const renderPost = function(robotThumbUrl, catThumbUrl, catChatPhrase) {
   const catThumbEl = document.createElement('IMG');
   catThumbEl.src = catThumbUrl;
 
+  //<obata> 2つの画像の下にメッセージを表示する
   const catChatPhraseEl = document.createElement('P');
   catChatPhraseEl.innerText = generateRandomCatChatPhrase();
 
